@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "00c3dfa5-ce46-4603-90bc-5e56f8942710",
+		"name": "手机号查询",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mobile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a8ad249-7687-4adf-b24c-7abb08c04ab4",
+						"exec": [
+							"//验证服务器返回状态码为：200",
+							"pm.test(\"验证服务器返回状态码为：200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//验证服务器返回error_code值为：0",
+							"pm.test(\"验证服务器返回error_code值为：0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error_code).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/mobile/get?phone=18697797688&key=c4555c5140e29bb7a704b51a64f921c4&dtype=json",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"mobile",
+						"get"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "18697797688"
+						},
+						{
+							"key": "key",
+							"value": "c4555c5140e29bb7a704b51a64f921c4"
+						},
+						{
+							"key": "dtype",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
